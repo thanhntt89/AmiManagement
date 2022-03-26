@@ -1,0 +1,794 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C54DA82A-B736-41A8-B1FA-A642D47F98B5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OperationDTO</RootNamespace>
+    <AssemblyName>OperationDTO</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AmiOperationDataSet\CommandLineDataSet.cs">
+      <DependentUpon>CommandLineDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\CommandLineDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommandLineDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\ErrorCodeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorCodeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\ErrorEntity.cs" />
+    <Compile Include="AmiOperationDataSet\ErrorListDataSet.cs">
+      <DependentUpon>ErrorListDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\ErrorListDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorListDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\FirmwareDataSet.Designer.cs">
+      <DependentUpon>FirmwareDataSet.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\FixErrorDataSet.cs">
+      <DependentUpon>FixErrorDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\FixErrorDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FixErrorDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\FixGroupCollection.cs" />
+    <Compile Include="AmiOperationDataSet\FixGroupDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FixGroupDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\FixStepDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FixStepDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\FixStepErrorCollection.cs" />
+    <Compile Include="AmiOperationDataSet\GroupFunctionDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GroupFunctionDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\LogDeploymentDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogDeploymentDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\MessageCollection.cs" />
+    <Compile Include="AmiOperationDataSet\MeterTypeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeterTypeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\ModemTypeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModemTypeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\ObisTableDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ObisTableDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\OperationTimeConfigDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OperationTimeConfigDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\ReportErrorDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportErrorDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\ServerDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServerDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\SystemConfigDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SystemConfigDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\SystemConfigEntity.cs" />
+    <Compile Include="AmiOperationDataSet\SystemFunctionDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SystemFunctionDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\SystemHistoriesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SystemHistoriesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\UserDataSet.cs">
+      <DependentUpon>UserDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\UserDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\UserGroupDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserGroupDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\ContractDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContractDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\CustomerDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\DataByDcuCodeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataByDcuCodeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\DataByMeasurementPointDataSet.cs">
+      <DependentUpon>DataByMeasurementPointDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\DataByMeasurementPointDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataByMeasurementPointDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\DataConcentratorUnitDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataConcentratorUnitDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\DataExistCheckDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataExistCheckDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\DcuTempDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DcuTempDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\EventMeterDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventMeterDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\Historical3PDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Historical3PDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\Instantaneous3PDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Instantaneous3PDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\LoadProfile3PDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoadProfile3PDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\MeasurementPointConfigDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeasurementPointConfigDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\MeasurementPointDataSet.cs">
+      <DependentUpon>MeasurementPointDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\MeasurementPointDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeasurementPointDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\MeasurementPointEntity.cs" />
+    <Compile Include="AmiSystemDataSet\MeasurementPointGroupDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeasurementPointGroupDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\MeasurementPointMeterDataSet.cs">
+      <DependentUpon>MeasurementPointMeterDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\MeasurementPointMeterDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeasurementPointMeterDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\MeasurementPointStatusDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeasurementPointStatusDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\MeasurementPointTransaction.cs" />
+    <Compile Include="AmiSystemDataSet\MeterDataSet.cs">
+      <DependentUpon>MeterDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\MeterDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeterDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\MeterScaleDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeterScaleDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\MeterTypeAmiSysDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeterTypeAmiSysDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\Operation3PDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Operation3PDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\OperationAlertDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OperationAlertDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\OrganizationDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrganizationDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AmiSystemDataSet\StationDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StationDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="AmiOperationDataSet\SystemHistories.cs" />
+    <Compile Include="TableAdapterUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AmiOperationDataSet\CommandLineDataSet.xsc">
+      <DependentUpon>CommandLineDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\CommandLineDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CommandLineDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\CommandLineDataSet.xss">
+      <DependentUpon>CommandLineDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\ErrorCodeDataSet.xsc">
+      <DependentUpon>ErrorCodeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\ErrorCodeDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ErrorCodeDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\ErrorCodeDataSet.xss">
+      <DependentUpon>ErrorCodeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\ErrorListDataSet.xsc">
+      <DependentUpon>ErrorListDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\ErrorListDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ErrorListDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\ErrorListDataSet.xss">
+      <DependentUpon>ErrorListDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\FirmwareDataSet.xsc">
+      <DependentUpon>FirmwareDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\FirmwareDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FirmwareDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\FirmwareDataSet.xss">
+      <DependentUpon>FirmwareDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\FixErrorDataSet.xsc">
+      <DependentUpon>FixErrorDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\FixErrorDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FixErrorDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\FixErrorDataSet.xss">
+      <DependentUpon>FixErrorDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\FixGroupDataSet.xsc">
+      <DependentUpon>FixGroupDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\FixGroupDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FixGroupDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\FixGroupDataSet.xss">
+      <DependentUpon>FixGroupDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\FixStepDataSet.xsc">
+      <DependentUpon>FixStepDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\FixStepDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FixStepDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\FixStepDataSet.xss">
+      <DependentUpon>FixStepDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\GroupFunctionDataSet.xsc">
+      <DependentUpon>GroupFunctionDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\GroupFunctionDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GroupFunctionDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\GroupFunctionDataSet.xss">
+      <DependentUpon>GroupFunctionDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\LogDeploymentDataSet.xsc">
+      <DependentUpon>LogDeploymentDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\LogDeploymentDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LogDeploymentDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\LogDeploymentDataSet.xss">
+      <DependentUpon>LogDeploymentDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\MeterTypeDataSet.xsc">
+      <DependentUpon>MeterTypeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\MeterTypeDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MeterTypeDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\MeterTypeDataSet.xss">
+      <DependentUpon>MeterTypeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\ModemTypeDataSet.xsc">
+      <DependentUpon>ModemTypeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\ModemTypeDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ModemTypeDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\ModemTypeDataSet.xss">
+      <DependentUpon>ModemTypeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\ObisTableDataSet.xsc">
+      <DependentUpon>ObisTableDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\ObisTableDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ObisTableDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\ObisTableDataSet.xss">
+      <DependentUpon>ObisTableDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\OperationTimeConfigDataSet.xsc">
+      <DependentUpon>OperationTimeConfigDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\OperationTimeConfigDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OperationTimeConfigDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\OperationTimeConfigDataSet.xss">
+      <DependentUpon>OperationTimeConfigDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\ReportErrorDataSet.xsc">
+      <DependentUpon>ReportErrorDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\ReportErrorDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportErrorDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\ReportErrorDataSet.xss">
+      <DependentUpon>ReportErrorDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\ServerDataSet.xsc">
+      <DependentUpon>ServerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\ServerDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ServerDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\ServerDataSet.xss">
+      <DependentUpon>ServerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\SystemConfigDataSet.xsc">
+      <DependentUpon>SystemConfigDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\SystemConfigDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SystemConfigDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\SystemConfigDataSet.xss">
+      <DependentUpon>SystemConfigDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\SystemFunctionDataSet.xsc">
+      <DependentUpon>SystemFunctionDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\SystemFunctionDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SystemFunctionDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\SystemFunctionDataSet.xss">
+      <DependentUpon>SystemFunctionDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\SystemHistoriesDataSet.xsc">
+      <DependentUpon>SystemHistoriesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\SystemHistoriesDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SystemHistoriesDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\SystemHistoriesDataSet.xss">
+      <DependentUpon>SystemHistoriesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\UserDataSet.xsc">
+      <DependentUpon>UserDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\UserDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UserDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\UserDataSet.xss">
+      <DependentUpon>UserDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\UserGroupDataSet.xsc">
+      <DependentUpon>UserGroupDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiOperationDataSet\UserGroupDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UserGroupDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiOperationDataSet\UserGroupDataSet.xss">
+      <DependentUpon>UserGroupDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\ContractDataSet.xsc">
+      <DependentUpon>ContractDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\ContractDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ContractDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\ContractDataSet.xss">
+      <DependentUpon>ContractDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\CustomerDataSet.xsc">
+      <DependentUpon>CustomerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\CustomerDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CustomerDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\CustomerDataSet.xss">
+      <DependentUpon>CustomerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\DataByDcuCodeDataSet.xsc">
+      <DependentUpon>DataByDcuCodeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\DataByDcuCodeDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataByDcuCodeDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\DataByDcuCodeDataSet.xss">
+      <DependentUpon>DataByDcuCodeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\DataByMeasurementPointDataSet.xsc">
+      <DependentUpon>DataByMeasurementPointDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\DataByMeasurementPointDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataByMeasurementPointDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\DataByMeasurementPointDataSet.xss">
+      <DependentUpon>DataByMeasurementPointDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\DataConcentratorUnitDataSet.xsc">
+      <DependentUpon>DataConcentratorUnitDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\DataConcentratorUnitDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataConcentratorUnitDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\DataConcentratorUnitDataSet.xss">
+      <DependentUpon>DataConcentratorUnitDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\DataExistCheckDataSet.xsc">
+      <DependentUpon>DataExistCheckDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\DataExistCheckDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataExistCheckDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\DataExistCheckDataSet.xss">
+      <DependentUpon>DataExistCheckDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\DcuTempDataSet.xsc">
+      <DependentUpon>DcuTempDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\DcuTempDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DcuTempDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\DcuTempDataSet.xss">
+      <DependentUpon>DcuTempDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\EventMeterDataSet.xsc">
+      <DependentUpon>EventMeterDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\EventMeterDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EventMeterDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\EventMeterDataSet.xss">
+      <DependentUpon>EventMeterDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\Historical3PDataSet.xsc">
+      <DependentUpon>Historical3PDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\Historical3PDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Historical3PDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\Historical3PDataSet.xss">
+      <DependentUpon>Historical3PDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\Instantaneous3PDataSet.xsc">
+      <DependentUpon>Instantaneous3PDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\Instantaneous3PDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Instantaneous3PDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\Instantaneous3PDataSet.xss">
+      <DependentUpon>Instantaneous3PDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\LoadProfile3PDataSet.xsc">
+      <DependentUpon>LoadProfile3PDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\LoadProfile3PDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LoadProfile3PDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\LoadProfile3PDataSet.xss">
+      <DependentUpon>LoadProfile3PDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointConfigDataSet.xsc">
+      <DependentUpon>MeasurementPointConfigDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointConfigDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MeasurementPointConfigDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointConfigDataSet.xss">
+      <DependentUpon>MeasurementPointConfigDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointDataSet.xsc">
+      <DependentUpon>MeasurementPointDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MeasurementPointDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointDataSet.xss">
+      <DependentUpon>MeasurementPointDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointGroupDataSet.xsc">
+      <DependentUpon>MeasurementPointGroupDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointGroupDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MeasurementPointGroupDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointGroupDataSet.xss">
+      <DependentUpon>MeasurementPointGroupDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointMeterDataSet.xsc">
+      <DependentUpon>MeasurementPointMeterDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointMeterDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MeasurementPointMeterDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointMeterDataSet.xss">
+      <DependentUpon>MeasurementPointMeterDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointStatusDataSet.xsc">
+      <DependentUpon>MeasurementPointStatusDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointStatusDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MeasurementPointStatusDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\MeasurementPointStatusDataSet.xss">
+      <DependentUpon>MeasurementPointStatusDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeterDataSet.xsc">
+      <DependentUpon>MeterDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeterDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MeterDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\MeterDataSet.xss">
+      <DependentUpon>MeterDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeterScaleDataSet.xsc">
+      <DependentUpon>MeterScaleDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeterScaleDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MeterScaleDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\MeterScaleDataSet.xss">
+      <DependentUpon>MeterScaleDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeterTypeAmiSysDataSet.xsc">
+      <DependentUpon>MeterTypeAmiSysDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\MeterTypeAmiSysDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MeterTypeAmiSysDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\MeterTypeAmiSysDataSet.xss">
+      <DependentUpon>MeterTypeAmiSysDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\Operation3PDataSet.xsc">
+      <DependentUpon>Operation3PDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\Operation3PDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Operation3PDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\Operation3PDataSet.xss">
+      <DependentUpon>Operation3PDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\OperationAlertDataSet.xsc">
+      <DependentUpon>OperationAlertDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\OperationAlertDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OperationAlertDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\OperationAlertDataSet.xss">
+      <DependentUpon>OperationAlertDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\OrganizationDataSet.xsc">
+      <DependentUpon>OrganizationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\OrganizationDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OrganizationDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\OrganizationDataSet.xss">
+      <DependentUpon>OrganizationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\StationDataSet.xsc">
+      <DependentUpon>StationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AmiSystemDataSet\StationDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StationDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AmiSystemDataSet\StationDataSet.xss">
+      <DependentUpon>StationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

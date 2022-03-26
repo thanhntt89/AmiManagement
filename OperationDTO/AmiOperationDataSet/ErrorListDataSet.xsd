@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ErrorListDataSet" targetNamespace="http://tempuri.org/ErrorListDataSet.xsd" xmlns:mstns="http://tempuri.org/ErrorListDataSet.xsd" xmlns="http://tempuri.org/ErrorListDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="AmiSystemOperationConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AmiSystemOperationConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.OperationDTO.Properties.Settings.GlobalReference.Default.AmiSystemOperationConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GetErrorListTableAdapter" GeneratorDataComponentClassName="GetErrorListTableAdapter" Name="GetErrorList" UserDataComponentName="GetErrorListTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AmiSystemOperationConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ErrorList.ErrorId, ErrorList.ErrorCode, ErrorList.CreatedDate, ErrorList.MeterTypeId, ErrorList.DcuCode, ErrorList.MeasurementPoint, ErrorList.Location, 
+                         ErrorList.GroupName, ErrorList.ErrorDate, ErrorList.FixContentSuggestion, ErrorList.FixDate, ErrorList.IsFixed, ErrorList.FixGroupId, ErrorCode.ErrorName, 
+                         FixGroup.FixGroupName
+FROM            ErrorList LEFT OUTER JOIN
+                         ErrorCode ON ErrorList.ErrorCode = ErrorCode.ErrorCode LEFT OUTER JOIN
+                         FixGroup ON ErrorList.FixGroupId = FixGroup.FixGroupId</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ErrorId" DataSetColumn="ErrorId" />
+              <Mapping SourceColumn="ErrorCode" DataSetColumn="ErrorCode" />
+              <Mapping SourceColumn="CreatedDate" DataSetColumn="CreatedDate" />
+              <Mapping SourceColumn="MeterTypeId" DataSetColumn="MeterTypeId" />
+              <Mapping SourceColumn="DcuCode" DataSetColumn="DcuCode" />
+              <Mapping SourceColumn="MeasurementPoint" DataSetColumn="MeasurementPoint" />
+              <Mapping SourceColumn="Location" DataSetColumn="Location" />
+              <Mapping SourceColumn="GroupName" DataSetColumn="GroupName" />
+              <Mapping SourceColumn="ErrorDate" DataSetColumn="ErrorDate" />
+              <Mapping SourceColumn="FixContentSuggestion" DataSetColumn="FixContentSuggestion" />
+              <Mapping SourceColumn="FixDate" DataSetColumn="FixDate" />
+              <Mapping SourceColumn="IsFixed" DataSetColumn="IsFixed" />
+              <Mapping SourceColumn="FixGroupId" DataSetColumn="FixGroupId" />
+              <Mapping SourceColumn="ErrorName" DataSetColumn="ErrorName" />
+              <Mapping SourceColumn="FixGroupName" DataSetColumn="FixGroupName" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="AmiSystemOperationConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByCondition" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByCondition" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByCondition">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ErrorList.ErrorId, ErrorList.ErrorCode, ErrorList.CreatedDate, ErrorList.MeterTypeId, ErrorList.DcuCode, ErrorList.MeasurementPoint, ErrorList.Location, 
+                         ErrorList.GroupName, (CASE WHEN ErrorList.ErrorDate IS NULL THEN ErrorList.CreatedDate ELSE ErrorList.ErrorDate END) AS ErrorDate, 
+                         ErrorList.FixContentSuggestion, ErrorList.FixDate, ErrorList.IsFixed, ErrorList.FixGroupId, ErrorCode.ErrorName, FixGroup.FixGroupName, ErrorList.GroupCode
+FROM            ErrorList LEFT OUTER JOIN
+                         ErrorCode ON ErrorList.ErrorCode = ErrorCode.ErrorCode LEFT OUTER JOIN
+                         FixGroup ON ErrorList.FixGroupId = FixGroup.FixGroupId
+WHERE        (@CreatedDate IS NULL OR
+                         CAST(ErrorList.CreatedDate AS DATE) = CAST(@CreatedDate AS DATE)) AND (@CreatedDate IS NULL OR
+                         CAST(ErrorList.CreatedDate AS TIME) &gt;= CAST(DATEADD(hour, DATEDIFF(hour, 0, @CreatedDate), 0) AS TIME)) AND (@CreatedDate IS NULL OR
+                         CAST(ErrorList.CreatedDate AS TIME) &lt;= CAST(@CreatedDate AS TIME)) AND (@DcuType IS NULL OR
+                         ErrorList.MeterTypeId = @DcuType) AND (@IsFixed = - 1 OR
+                         ErrorList.IsFixed = @IsFixed) AND (@FixGroupId = - 1 OR
+                         ErrorList.FixGroupId = @FixGroupId) AND (@GroupCode IS NULL OR
+                         ErrorList.GroupCode = @GroupCode)
+AND ( @ErrorCode IS NULL OR ErrorList.ErrorCode = @ErrorCode )
+ORDER BY ErrorList.CreatedDate</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="IsFixed" ColumnName="IsFixed" DataSourceName="AmiSystemOperationManagement.dbo.ErrorList" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@IsFixed" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="IsFixed" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="CreatedDate" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="DateTime" Direction="Input" ParameterName="@CreatedDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="DcuType" ColumnName="MeterTypeId" DataSourceName="AmiSystemOperationManagement.dbo.ErrorList" DataTypeServer="nvarchar(30)" DbType="String" Direction="Input" ParameterName="@DcuType" Precision="0" ProviderType="NVarChar" Scale="0" Size="30" SourceColumn="MeterTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="FixGroupId" ColumnName="FixGroupId" DataSourceName="AmiSystemOperationManagement.dbo.ErrorList" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@FixGroupId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="FixGroupId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="GroupCode" ColumnName="GroupCode" DataSourceName="AmiSystemOperationManagement.dbo.ErrorList" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@GroupCode" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="GroupCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ErrorCode" ColumnName="ErrorCode" DataSourceName="AmiSystemOperationManagement.dbo.ErrorList" DataTypeServer="varchar(2)" DbType="String" Direction="Input" ParameterName="@ErrorCode" Precision="0" ProviderType="VarChar" Scale="0" Size="2" SourceColumn="ErrorCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="AmiSystemOperationConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByDcuCodeAndErrorCodeAndStatus" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByDcuCodeAndErrorCodeAndStatus" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByDcuCodeAndErrorCodeAndStatus">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ErrorList.ErrorId, ErrorList.ErrorCode, ErrorList.CreatedDate, ErrorList.MeterTypeId, ErrorList.DcuCode, ErrorList.MeasurementPoint, ErrorList.Location, 
+                         ErrorList.GroupName, ErrorList.ErrorDate, ErrorList.FixContentSuggestion, ErrorList.FixDate, ErrorList.IsFixed, ErrorList.FixGroupId, ErrorCode.ErrorName, 
+                         FixGroup.FixGroupName
+FROM            ErrorList LEFT OUTER JOIN
+                         ErrorCode ON ErrorList.ErrorCode = ErrorCode.ErrorCode LEFT OUTER JOIN
+                         FixGroup ON ErrorList.FixGroupId = FixGroup.FixGroupId
+WHERE        (ErrorList.ErrorCode = @ErrorCode) AND (ErrorList.IsFixed = @IsFixed) AND (ErrorList.DcuCode = @DcuCode)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="DcuCode" ColumnName="DcuCode" DataSourceName="AmiSystemOperationManagement.dbo.ErrorList" DataTypeServer="varchar(50)" DbType="AnsiString" Direction="Input" ParameterName="@DcuCode" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="DcuCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ErrorCode" ColumnName="ErrorCode" DataSourceName="AmiSystemOperationManagement.dbo.ErrorList" DataTypeServer="varchar(2)" DbType="AnsiString" Direction="Input" ParameterName="@ErrorCode" Precision="0" ProviderType="VarChar" Scale="0" Size="2" SourceColumn="ErrorCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="IsFixed" ColumnName="IsFixed" DataSourceName="AmiSystemOperationManagement.dbo.ErrorList" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@IsFixed" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="IsFixed" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="AmiSystemOperationConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByErrorId" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByErrorId" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillByErrorId">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ErrorList.ErrorId, ErrorList.ErrorCode, ErrorList.CreatedDate, ErrorList.MeterTypeId, ErrorList.DcuCode, ErrorList.MeasurementPoint, ErrorList.Location, 
+                         ErrorList.GroupName, ErrorList.ErrorDate, ErrorList.FixContentSuggestion, ErrorList.FixDate, ErrorList.IsFixed, ErrorList.FixGroupId, ErrorCode.ErrorName, 
+                         FixGroup.FixGroupName
+FROM            ErrorList INNER JOIN
+                         ErrorCode ON ErrorList.ErrorCode = ErrorCode.ErrorCode LEFT OUTER JOIN
+                         FixGroup ON ErrorList.FixGroupId = FixGroup.FixGroupId
+WHERE        (ErrorList.ErrorId = @ErrorId)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="ErrorId" ColumnName="ErrorId" DataSourceName="AmiSystemOperationManagement.dbo.ErrorList" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ErrorId" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ErrorId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="AmiSystemOperationConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByMeterTypeAndFixStatus" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByMeterTypeAndFixStatus" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="FillByMeterTypeAndFixStatus">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ErrorList.ErrorId, ErrorList.ErrorCode, ErrorList.CreatedDate, ErrorList.MeterTypeId, ErrorList.DcuCode, ErrorList.MeasurementPoint, ErrorList.Location, 
+                         ErrorList.GroupName, (CASE WHEN ErrorList.ErrorDate IS NULL THEN ErrorList.CreatedDate ELSE ErrorList.ErrorDate END) AS ErrorDate, 
+                         ErrorList.FixContentSuggestion, ErrorList.FixDate, ErrorList.IsFixed, ErrorList.FixGroupId, ErrorCode.ErrorName, FixGroup.FixGroupName
+FROM            ErrorList LEFT OUTER JOIN
+                         ErrorCode ON ErrorList.ErrorCode = ErrorCode.ErrorCode LEFT OUTER JOIN
+                         FixGroup ON ErrorList.FixGroupId = FixGroup.FixGroupId
+WHERE        (ErrorList.IsFixed = @IsFixed) AND (ErrorList.MeterTypeId = @DcuType)
+ORDER BY ErrorList.CreatedDate</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="DcuType" ColumnName="MeterTypeId" DataSourceName="AmiSystemOperationManagement.dbo.ErrorList" DataTypeServer="nvarchar(30)" DbType="String" Direction="Input" ParameterName="@DcuType" Precision="0" ProviderType="NVarChar" Scale="0" Size="30" SourceColumn="MeterTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="IsFixed" ColumnName="IsFixed" DataSourceName="AmiSystemOperationManagement.dbo.ErrorList" DataTypeServer="int" DbType="Boolean" Direction="Input" ParameterName="@IsFixed" Precision="0" ProviderType="Bit" Scale="0" Size="4" SourceColumn="IsFixed" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ErrorListTableAdapter" GeneratorDataComponentClassName="ErrorListTableAdapter" Name="ErrorList" UserDataComponentName="ErrorListTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AmiSystemOperationConnectionString (Settings)" DbObjectName="AmiSystemOperationManagement.dbo.ErrorList" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[ErrorList] WHERE (([ErrorId] = @Original_ErrorId) AND ([ErrorCode] = @Original_ErrorCode) AND ((@IsNull_CreatedDate = 1 AND [CreatedDate] IS NULL) OR ([CreatedDate] = @Original_CreatedDate)) AND ([MeterTypeId] = @Original_MeterTypeId) AND ((@IsNull_DcuCode = 1 AND [DcuCode] IS NULL) OR ([DcuCode] = @Original_DcuCode)) AND ((@IsNull_MeasurementPoint = 1 AND [MeasurementPoint] IS NULL) OR ([MeasurementPoint] = @Original_MeasurementPoint)) AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR ([Location] = @Original_Location)) AND ((@IsNull_GroupCode = 1 AND [GroupCode] IS NULL) OR ([GroupCode] = @Original_GroupCode)) AND ((@IsNull_GroupName = 1 AND [GroupName] IS NULL) OR ([GroupName] = @Original_GroupName)) AND ((@IsNull_ErrorDate = 1 AND [ErrorDate] IS NULL) OR ([ErrorDate] = @Original_ErrorDate)) AND ((@IsNull_FixContentSuggestion = 1 AND [FixContentSuggestion] IS NULL) OR ([FixContentSuggestion] = @Original_FixContentSuggestion)) AND ((@IsNull_FixDate = 1 AND [FixDate] IS NULL) OR ([FixDate] = @Original_FixDate)) AND ([IsFixed] = @Original_IsFixed) AND ((@IsNull_FixGroupId = 1 AND [FixGroupId] IS NULL) OR ([FixGroupId] = @Original_FixGroupId)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ErrorId" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ErrorId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_ErrorCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ErrorCode" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CreatedDate" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CreatedDate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_CreatedDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="CreatedDate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_MeterTypeId" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="MeterTypeId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DcuCode" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DcuCode" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_DcuCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DcuCode" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MeasurementPoint" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MeasurementPoint" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MeasurementPoint" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MeasurementPoint" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Location" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Location" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Location" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Location" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_GroupCode" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="GroupCode" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_GroupCode" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="GroupCode" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_GroupName" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="GroupName" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_GroupName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="GroupName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ErrorDate" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ErrorDate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_ErrorDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="ErrorDate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FixContentSuggestion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FixContentSuggestion" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_FixContentSuggestion" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="FixContentSuggestion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FixDate" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FixDate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FixDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FixDate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IsFixed" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IsFixed" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FixGroupId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FixGroupId" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_FixGroupId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FixGroupId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[ErrorList] ([ErrorCode], [CreatedDate], [MeterTypeId], [DcuCode], [MeasurementPoint], [Location], [GroupCode], [GroupName], [ErrorDate], [FixContentSuggestion], [FixDate], [IsFixed], [FixGroupId]) VALUES (@ErrorCode, @CreatedDate, @MeterTypeId, @DcuCode, @MeasurementPoint, @Location, @GroupCode, @GroupName, @ErrorDate, @FixContentSuggestion, @FixDate, @IsFixed, @FixGroupId);
+SELECT ErrorId, ErrorCode, CreatedDate, MeterTypeId, DcuCode, MeasurementPoint, Location, GroupCode, GroupName, ErrorDate, FixContentSuggestion, FixDate, IsFixed, FixGroupId FROM ErrorList WHERE (ErrorId = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ErrorCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ErrorCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@CreatedDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="CreatedDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@MeterTypeId" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="MeterTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@DcuCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DcuCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MeasurementPoint" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MeasurementPoint" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Location" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Location" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@GroupCode" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="GroupCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@GroupName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="GroupName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@ErrorDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="ErrorDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@FixContentSuggestion" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="FixContentSuggestion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FixDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FixDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsFixed" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IsFixed" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@FixGroupId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FixGroupId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ErrorId, ErrorCode, CreatedDate, MeterTypeId, DcuCode, MeasurementPoint, Location, GroupCode, GroupName, ErrorDate, FixContentSuggestion, FixDate, IsFixed, FixGroupId FROM dbo.ErrorList</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[ErrorList] SET [ErrorCode] = @ErrorCode, [CreatedDate] = @CreatedDate, [MeterTypeId] = @MeterTypeId, [DcuCode] = @DcuCode, [MeasurementPoint] = @MeasurementPoint, [Location] = @Location, [GroupCode] = @GroupCode, [GroupName] = @GroupName, [ErrorDate] = @ErrorDate, [FixContentSuggestion] = @FixContentSuggestion, [FixDate] = @FixDate, [IsFixed] = @IsFixed, [FixGroupId] = @FixGroupId WHERE (([ErrorId] = @Original_ErrorId) AND ([ErrorCode] = @Original_ErrorCode) AND ((@IsNull_CreatedDate = 1 AND [CreatedDate] IS NULL) OR ([CreatedDate] = @Original_CreatedDate)) AND ([MeterTypeId] = @Original_MeterTypeId) AND ((@IsNull_DcuCode = 1 AND [DcuCode] IS NULL) OR ([DcuCode] = @Original_DcuCode)) AND ((@IsNull_MeasurementPoint = 1 AND [MeasurementPoint] IS NULL) OR ([MeasurementPoint] = @Original_MeasurementPoint)) AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR ([Location] = @Original_Location)) AND ((@IsNull_GroupCode = 1 AND [GroupCode] IS NULL) OR ([GroupCode] = @Original_GroupCode)) AND ((@IsNull_GroupName = 1 AND [GroupName] IS NULL) OR ([GroupName] = @Original_GroupName)) AND ((@IsNull_ErrorDate = 1 AND [ErrorDate] IS NULL) OR ([ErrorDate] = @Original_ErrorDate)) AND ((@IsNull_FixContentSuggestion = 1 AND [FixContentSuggestion] IS NULL) OR ([FixContentSuggestion] = @Original_FixContentSuggestion)) AND ((@IsNull_FixDate = 1 AND [FixDate] IS NULL) OR ([FixDate] = @Original_FixDate)) AND ([IsFixed] = @Original_IsFixed) AND ((@IsNull_FixGroupId = 1 AND [FixGroupId] IS NULL) OR ([FixGroupId] = @Original_FixGroupId)));
+SELECT ErrorId, ErrorCode, CreatedDate, MeterTypeId, DcuCode, MeasurementPoint, Location, GroupCode, GroupName, ErrorDate, FixContentSuggestion, FixDate, IsFixed, FixGroupId FROM ErrorList WHERE (ErrorId = @ErrorId)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ErrorCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ErrorCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@CreatedDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="CreatedDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@MeterTypeId" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="MeterTypeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@DcuCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DcuCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MeasurementPoint" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MeasurementPoint" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Location" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Location" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@GroupCode" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="GroupCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@GroupName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="GroupName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@ErrorDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="ErrorDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@FixContentSuggestion" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="FixContentSuggestion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FixDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FixDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsFixed" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IsFixed" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@FixGroupId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FixGroupId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_ErrorId" Precision="0" ProviderType="BigInt" Scale="0" Size="0" SourceColumn="ErrorId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_ErrorCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ErrorCode" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CreatedDate" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CreatedDate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_CreatedDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="CreatedDate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_MeterTypeId" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="MeterTypeId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DcuCode" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DcuCode" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_DcuCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DcuCode" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_MeasurementPoint" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MeasurementPoint" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MeasurementPoint" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MeasurementPoint" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Location" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Location" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Location" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Location" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_GroupCode" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="GroupCode" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_GroupCode" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="GroupCode" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_GroupName" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="GroupName" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_GroupName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="GroupName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ErrorDate" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ErrorDate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_ErrorDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="ErrorDate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FixContentSuggestion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FixContentSuggestion" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_FixContentSuggestion" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="FixContentSuggestion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FixDate" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FixDate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FixDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FixDate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IsFixed" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IsFixed" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FixGroupId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FixGroupId" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_FixGroupId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FixGroupId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ErrorId" ColumnName="ErrorId" DataSourceName="" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ErrorId" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ErrorId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ErrorId" DataSetColumn="ErrorId" />
+              <Mapping SourceColumn="ErrorCode" DataSetColumn="ErrorCode" />
+              <Mapping SourceColumn="CreatedDate" DataSetColumn="CreatedDate" />
+              <Mapping SourceColumn="MeterTypeId" DataSetColumn="MeterTypeId" />
+              <Mapping SourceColumn="DcuCode" DataSetColumn="DcuCode" />
+              <Mapping SourceColumn="MeasurementPoint" DataSetColumn="MeasurementPoint" />
+              <Mapping SourceColumn="Location" DataSetColumn="Location" />
+              <Mapping SourceColumn="GroupCode" DataSetColumn="GroupCode" />
+              <Mapping SourceColumn="GroupName" DataSetColumn="GroupName" />
+              <Mapping SourceColumn="ErrorDate" DataSetColumn="ErrorDate" />
+              <Mapping SourceColumn="FixContentSuggestion" DataSetColumn="FixContentSuggestion" />
+              <Mapping SourceColumn="FixDate" DataSetColumn="FixDate" />
+              <Mapping SourceColumn="IsFixed" DataSetColumn="IsFixed" />
+              <Mapping SourceColumn="FixGroupId" DataSetColumn="FixGroupId" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="AmiSystemOperationConnectionString (Settings)" DbObjectName="AmiSystemOperationManagement.dbo.ErrorList" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByErrorId" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByErrorId" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByErrorId">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ErrorId, ErrorCode, CreatedDate, MeterTypeId, DcuCode, MeasurementPoint, Location, GroupCode, GroupName, ErrorDate, FixContentSuggestion, FixDate, IsFixed, 
+                         FixGroupId
+FROM            ErrorList
+WHERE        (ErrorId = @ErrorId)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="ErrorId" ColumnName="ErrorId" DataSourceName="AmiSystemOperationManagement.dbo.ErrorList" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ErrorId" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ErrorId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MeasurementPoitGroupTableAdapter" GeneratorDataComponentClassName="MeasurementPoitGroupTableAdapter" Name="MeasurementPoitGroup" UserDataComponentName="MeasurementPoitGroupTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AmiSystemOperationConnectionString (Settings)" DbObjectName="AmiSystemOperationManagement.dbo.ErrorList" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        GroupCode, GroupName
+FROM            ErrorList
+GROUP BY GroupCode, GroupName</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="GroupCode" DataSetColumn="GroupCode" />
+              <Mapping SourceColumn="GroupName" DataSetColumn="GroupName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ErrorListDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ErrorListDataSet" msprop:Generator_UserDSName="ErrorListDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="GetErrorList" msprop:Generator_TableClassName="GetErrorListDataTable" msprop:Generator_TableVarName="tableGetErrorList" msprop:Generator_RowChangedName="GetErrorListRowChanged" msprop:Generator_TablePropName="GetErrorList" msprop:Generator_RowDeletingName="GetErrorListRowDeleting" msprop:Generator_RowChangingName="GetErrorListRowChanging" msprop:Generator_RowEvHandlerName="GetErrorListRowChangeEventHandler" msprop:Generator_RowDeletedName="GetErrorListRowDeleted" msprop:Generator_RowClassName="GetErrorListRow" msprop:Generator_UserTableName="GetErrorList" msprop:Generator_RowEvArgName="GetErrorListRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ErrorId" msprop:Generator_ColumnVarNameInTable="columnErrorId" msprop:Generator_ColumnPropNameInRow="ErrorId" msprop:Generator_ColumnPropNameInTable="ErrorIdColumn" msprop:Generator_UserColumnName="ErrorId" type="xs:long" />
+              <xs:element name="ErrorCode" msprop:Generator_ColumnVarNameInTable="columnErrorCode" msprop:Generator_ColumnPropNameInRow="ErrorCode" msprop:Generator_ColumnPropNameInTable="ErrorCodeColumn" msprop:Generator_UserColumnName="ErrorCode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CreatedDate" msprop:Generator_ColumnVarNameInTable="columnCreatedDate" msprop:Generator_ColumnPropNameInRow="CreatedDate" msprop:Generator_ColumnPropNameInTable="CreatedDateColumn" msprop:Generator_UserColumnName="CreatedDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MeterTypeId" msprop:Generator_ColumnVarNameInTable="columnMeterTypeId" msprop:Generator_ColumnPropNameInRow="MeterTypeId" msprop:Generator_ColumnPropNameInTable="MeterTypeIdColumn" msprop:Generator_UserColumnName="MeterTypeId" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DcuCode" msprop:Generator_ColumnVarNameInTable="columnDcuCode" msprop:Generator_ColumnPropNameInRow="DcuCode" msprop:Generator_ColumnPropNameInTable="DcuCodeColumn" msprop:Generator_UserColumnName="DcuCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MeasurementPoint" msprop:Generator_ColumnVarNameInTable="columnMeasurementPoint" msprop:Generator_ColumnPropNameInRow="MeasurementPoint" msprop:Generator_ColumnPropNameInTable="MeasurementPointColumn" msprop:Generator_UserColumnName="MeasurementPoint" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Location" msprop:Generator_ColumnVarNameInTable="columnLocation" msprop:Generator_ColumnPropNameInRow="Location" msprop:Generator_ColumnPropNameInTable="LocationColumn" msprop:Generator_UserColumnName="Location" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GroupName" msprop:Generator_ColumnVarNameInTable="columnGroupName" msprop:Generator_ColumnPropNameInRow="GroupName" msprop:Generator_ColumnPropNameInTable="GroupNameColumn" msprop:Generator_UserColumnName="GroupName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ErrorDate" msprop:Generator_ColumnVarNameInTable="columnErrorDate" msprop:Generator_ColumnPropNameInRow="ErrorDate" msprop:Generator_ColumnPropNameInTable="ErrorDateColumn" msprop:Generator_UserColumnName="ErrorDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FixContentSuggestion" msprop:Generator_ColumnVarNameInTable="columnFixContentSuggestion" msprop:Generator_ColumnPropNameInRow="FixContentSuggestion" msprop:Generator_ColumnPropNameInTable="FixContentSuggestionColumn" msprop:Generator_UserColumnName="FixContentSuggestion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FixDate" msprop:Generator_ColumnVarNameInTable="columnFixDate" msprop:Generator_ColumnPropNameInRow="FixDate" msprop:Generator_ColumnPropNameInTable="FixDateColumn" msprop:Generator_UserColumnName="FixDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IsFixed" msprop:Generator_ColumnVarNameInTable="columnIsFixed" msprop:Generator_ColumnPropNameInRow="IsFixed" msprop:Generator_ColumnPropNameInTable="IsFixedColumn" msprop:Generator_UserColumnName="IsFixed" type="xs:int" />
+              <xs:element name="FixGroupId" msprop:Generator_ColumnVarNameInTable="columnFixGroupId" msprop:Generator_ColumnPropNameInRow="FixGroupId" msprop:Generator_ColumnPropNameInTable="FixGroupIdColumn" msprop:Generator_UserColumnName="FixGroupId" type="xs:int" minOccurs="0" />
+              <xs:element name="ErrorName" msprop:Generator_ColumnVarNameInTable="columnErrorName" msprop:Generator_ColumnPropNameInRow="ErrorName" msprop:Generator_ColumnPropNameInTable="ErrorNameColumn" msprop:Generator_UserColumnName="ErrorName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FixGroupName" msprop:Generator_ColumnVarNameInTable="columnFixGroupName" msprop:Generator_ColumnPropNameInRow="FixGroupName" msprop:Generator_ColumnPropNameInTable="FixGroupNameColumn" msprop:Generator_UserColumnName="FixGroupName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ErrorList" msprop:Generator_TableClassName="ErrorListDataTable" msprop:Generator_TableVarName="tableErrorList" msprop:Generator_TablePropName="ErrorList" msprop:Generator_RowDeletingName="ErrorListRowDeleting" msprop:Generator_RowChangingName="ErrorListRowChanging" msprop:Generator_RowEvHandlerName="ErrorListRowChangeEventHandler" msprop:Generator_RowDeletedName="ErrorListRowDeleted" msprop:Generator_UserTableName="ErrorList" msprop:Generator_RowChangedName="ErrorListRowChanged" msprop:Generator_RowEvArgName="ErrorListRowChangeEvent" msprop:Generator_RowClassName="ErrorListRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ErrorId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnErrorId" msprop:Generator_ColumnPropNameInRow="ErrorId" msprop:Generator_ColumnPropNameInTable="ErrorIdColumn" msprop:Generator_UserColumnName="ErrorId" type="xs:long" />
+              <xs:element name="ErrorCode" msprop:Generator_ColumnVarNameInTable="columnErrorCode" msprop:Generator_ColumnPropNameInRow="ErrorCode" msprop:Generator_ColumnPropNameInTable="ErrorCodeColumn" msprop:Generator_UserColumnName="ErrorCode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CreatedDate" msprop:Generator_ColumnVarNameInTable="columnCreatedDate" msprop:Generator_ColumnPropNameInRow="CreatedDate" msprop:Generator_ColumnPropNameInTable="CreatedDateColumn" msprop:Generator_UserColumnName="CreatedDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MeterTypeId" msprop:Generator_ColumnVarNameInTable="columnMeterTypeId" msprop:Generator_ColumnPropNameInRow="MeterTypeId" msprop:Generator_ColumnPropNameInTable="MeterTypeIdColumn" msprop:Generator_UserColumnName="MeterTypeId">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DcuCode" msprop:Generator_ColumnVarNameInTable="columnDcuCode" msprop:Generator_ColumnPropNameInRow="DcuCode" msprop:Generator_ColumnPropNameInTable="DcuCodeColumn" msprop:Generator_UserColumnName="DcuCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MeasurementPoint" msprop:Generator_ColumnVarNameInTable="columnMeasurementPoint" msprop:Generator_ColumnPropNameInRow="MeasurementPoint" msprop:Generator_ColumnPropNameInTable="MeasurementPointColumn" msprop:Generator_UserColumnName="MeasurementPoint" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Location" msprop:Generator_ColumnVarNameInTable="columnLocation" msprop:Generator_ColumnPropNameInRow="Location" msprop:Generator_ColumnPropNameInTable="LocationColumn" msprop:Generator_UserColumnName="Location" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GroupCode" msprop:Generator_ColumnVarNameInTable="columnGroupCode" msprop:Generator_ColumnPropNameInRow="GroupCode" msprop:Generator_ColumnPropNameInTable="GroupCodeColumn" msprop:Generator_UserColumnName="GroupCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GroupName" msprop:Generator_ColumnVarNameInTable="columnGroupName" msprop:Generator_ColumnPropNameInRow="GroupName" msprop:Generator_ColumnPropNameInTable="GroupNameColumn" msprop:Generator_UserColumnName="GroupName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ErrorDate" msprop:Generator_ColumnVarNameInTable="columnErrorDate" msprop:Generator_ColumnPropNameInRow="ErrorDate" msprop:Generator_ColumnPropNameInTable="ErrorDateColumn" msprop:Generator_UserColumnName="ErrorDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FixContentSuggestion" msprop:Generator_ColumnVarNameInTable="columnFixContentSuggestion" msprop:Generator_ColumnPropNameInRow="FixContentSuggestion" msprop:Generator_ColumnPropNameInTable="FixContentSuggestionColumn" msprop:Generator_UserColumnName="FixContentSuggestion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FixDate" msprop:Generator_ColumnVarNameInTable="columnFixDate" msprop:Generator_ColumnPropNameInRow="FixDate" msprop:Generator_ColumnPropNameInTable="FixDateColumn" msprop:Generator_UserColumnName="FixDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="IsFixed" msprop:Generator_ColumnVarNameInTable="columnIsFixed" msprop:Generator_ColumnPropNameInRow="IsFixed" msprop:Generator_ColumnPropNameInTable="IsFixedColumn" msprop:Generator_UserColumnName="IsFixed" type="xs:int" />
+              <xs:element name="FixGroupId" msprop:Generator_ColumnVarNameInTable="columnFixGroupId" msprop:Generator_ColumnPropNameInRow="FixGroupId" msprop:Generator_ColumnPropNameInTable="FixGroupIdColumn" msprop:Generator_UserColumnName="FixGroupId" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MeasurementPoitGroup" msprop:Generator_TableClassName="MeasurementPoitGroupDataTable" msprop:Generator_TableVarName="tableMeasurementPoitGroup" msprop:Generator_RowChangedName="MeasurementPoitGroupRowChanged" msprop:Generator_TablePropName="MeasurementPoitGroup" msprop:Generator_RowDeletingName="MeasurementPoitGroupRowDeleting" msprop:Generator_RowChangingName="MeasurementPoitGroupRowChanging" msprop:Generator_RowEvHandlerName="MeasurementPoitGroupRowChangeEventHandler" msprop:Generator_RowDeletedName="MeasurementPoitGroupRowDeleted" msprop:Generator_RowClassName="MeasurementPoitGroupRow" msprop:Generator_UserTableName="MeasurementPoitGroup" msprop:Generator_RowEvArgName="MeasurementPoitGroupRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GroupCode" msprop:Generator_ColumnVarNameInTable="columnGroupCode" msprop:Generator_ColumnPropNameInRow="GroupCode" msprop:Generator_ColumnPropNameInTable="GroupCodeColumn" msprop:Generator_UserColumnName="GroupCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GroupName" msprop:Generator_ColumnVarNameInTable="columnGroupName" msprop:Generator_ColumnPropNameInRow="GroupName" msprop:Generator_ColumnPropNameInTable="GroupNameColumn" msprop:Generator_UserColumnName="GroupName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:GetErrorList" />
+      <xs:field xpath="mstns:ErrorId" />
+    </xs:unique>
+    <xs:unique name="ErrorList_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ErrorList" />
+      <xs:field xpath="mstns:ErrorId" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

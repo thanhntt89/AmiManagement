@@ -1,0 +1,745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{17559806-AEE1-4671-979A-37FA92BF3A9E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AmiOperationManagement</RootNamespace>
+    <AssemblyName>AmiOperationManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>AmiOperationManagement.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Accenture-icon_32.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar.Keyboard, Version=11.0.0.0, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=11.0.0.0, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=11.0.0.0, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.Instrumentation, Version=11.0.0.0, Culture=neutral, PublicKeyToken=bc4a9d761ea44ef0, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.TreeGX, Version=11.0.0.0, Culture=neutral, PublicKeyToken=cfcbd7476b2389d1, processorArchitecture=MSIL" />
+    <Reference Include="log4net">
+      <HintPath>..\AmiOperationLib\DLL\log4net.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About\SoftwareAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About\SoftwareAbout.Designer.cs">
+      <DependentUpon>SoftwareAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomeUserControl\DropdownControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomeUserControl\EasyCompletionComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomeUserControl\NodeCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomeUserControl\StringMatcher.cs" />
+    <Compile Include="CustomeUserControl\UCBreakPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomeUserControl\UCBreakPage.Designer.cs">
+      <DependentUpon>UCBreakPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomeUserControl\UCEvnTreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomeUserControl\UCEvnTreeView.Designer.cs">
+      <DependentUpon>UCEvnTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomeUserControl\UCProgressBarStop.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomeUserControl\UCProgressBarStop.Designer.cs">
+      <DependentUpon>UCProgressBarStop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomeUserControl\UCStartPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomeUserControl\UCStartPanel.Designer.cs">
+      <DependentUpon>UCStartPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomeUserControl\UCTextMaquee.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomeUserControl\UCTextMaquee.Designer.cs">
+      <DependentUpon>UCTextMaquee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomeUserControl\UserControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Deployment\AddMeasurementPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deployment\AddMeasurementPoint.Designer.cs">
+      <DependentUpon>AddMeasurementPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\AddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deployment\AddCustomer.Designer.cs">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\AddMeter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deployment\AddMeter.Designer.cs">
+      <DependentUpon>AddMeter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\AddDcu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deployment\AddDcu.Designer.cs">
+      <DependentUpon>AddDcu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\ChangeMeasurementPointMeter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deployment\ChangeMeasurementPointMeter.Designer.cs">
+      <DependentUpon>ChangeMeasurementPointMeter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\SearchingMeasurementPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deployment\SearchingMeasurementPoint.Designer.cs">
+      <DependentUpon>SearchingMeasurementPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\UCDeployHistories.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Deployment\UCDeployHistories.Designer.cs">
+      <DependentUpon>UCDeployHistories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\UCCustomerManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Deployment\UCCustomerManagement.Designer.cs">
+      <DependentUpon>UCCustomerManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\UCDcuManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Deployment\UCDcuManagement.Designer.cs">
+      <DependentUpon>UCDcuManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\UCMeasurementPointManagementTree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Deployment\UCMeasurementPointManagementTree.Designer.cs">
+      <DependentUpon>UCMeasurementPointManagementTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\UCMeasurementPointManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Deployment\UCMeasurementPointManagement.Designer.cs">
+      <DependentUpon>UCMeasurementPointManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\UCMeterManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Deployment\UCMeterManagement.Designer.cs">
+      <DependentUpon>UCMeterManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\UpdateCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deployment\UpdateCustomer.Designer.cs">
+      <DependentUpon>UpdateCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\UpdateDcu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deployment\UpdateDcu.Designer.cs">
+      <DependentUpon>UpdateDcu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\UpdateMeasurementPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deployment\UpdateMeasurementPoint.Designer.cs">
+      <DependentUpon>UpdateMeasurementPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\UpdateMeasurementPointMeter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deployment\UpdateMeasurementPointMeter.Designer.cs">
+      <DependentUpon>UpdateMeasurementPointMeter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\UpdateMeter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deployment\UpdateMeter.Designer.cs">
+      <DependentUpon>UpdateMeter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deployment\ViewMessageDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deployment\ViewMessageDetail.Designer.cs">
+      <DependentUpon>ViewMessageDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorManagement\FixedGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorManagement\FixedGroup.Designer.cs">
+      <DependentUpon>FixedGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorManagement\FixErrorStep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorManagement\FixErrorStep.Designer.cs">
+      <DependentUpon>FixErrorStep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorManagement\UCErrorSolution.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ErrorManagement\UCErrorSolution.Designer.cs">
+      <DependentUpon>UCErrorSolution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorManagement\UCErrorDefine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ErrorManagement\UCErrorDefine.Designer.cs">
+      <DependentUpon>UCErrorDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorManagement\UCMeasurementPoitMissingMessage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ErrorManagement\UCMeasurementPoitMissingMessage.Designer.cs">
+      <DependentUpon>UCMeasurementPoitMissingMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorManagement\UCModemFixbugHistories.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ErrorManagement\UCModemFixbugHistories.Designer.cs">
+      <DependentUpon>UCModemFixbugHistories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorManagement\UCReporting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ErrorManagement\UCReporting.Designer.cs">
+      <DependentUpon>UCReporting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ftp\UpdateFirmware.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ftp\UpdateFirmware.Designer.cs">
+      <DependentUpon>UpdateFirmware.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ftp\UploadFile.cs" />
+    <Compile Include="AmiEventHandle.cs" />
+    <Compile Include="Main\StartupSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\StartupSystem.Designer.cs">
+      <DependentUpon>StartupSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systems\AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systems\AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systems\ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systems\ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systems\DatabaseConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systems\DatabaseConfig.Designer.cs">
+      <DependentUpon>DatabaseConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systems\ObisDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systems\ObisDefine.Designer.cs">
+      <DependentUpon>ObisDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\SystemResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SystemResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Systems\UCSystemHistories.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Systems\UCSystemHistories.Designer.cs">
+      <DependentUpon>UCSystemHistories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systems\UCUserPermission.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Systems\UCUserPermission.Designer.cs">
+      <DependentUpon>UCUserPermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systems\UpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systems\UpdateUser.Designer.cs">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systems\DataBaseConnection.cs" />
+    <Compile Include="Main\Firmware.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\Firmware.Designer.cs">
+      <DependentUpon>Firmware.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\FunctionCollection.cs" />
+    <Compile Include="Systems\LoginSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systems\LoginSystem.Designer.cs">
+      <DependentUpon>LoginSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\OperationMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\OperationMain.Designer.cs">
+      <DependentUpon>OperationMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\TopicSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\TopicSearch.Designer.cs">
+      <DependentUpon>TopicSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\TopicsEntity.cs" />
+    <Compile Include="Connection\UCClientConnection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Connection\UCClientConnection.Designer.cs">
+      <DependentUpon>UCClientConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\UCMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\UCMain.Designer.cs">
+      <DependentUpon>UCMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorManagement\UCFixError.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ErrorManagement\UCFixError.Designer.cs">
+      <DependentUpon>UCFixError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\UpdateMeterType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operation\UpdateMeterType.Designer.cs">
+      <DependentUpon>UpdateMeterType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\MessageLostCollection.cs" />
+    <Compile Include="Systems\UCSystemConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Systems\UCSystemConfig.Designer.cs">
+      <DependentUpon>UCSystemConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systems\UCUserList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Systems\UCUserList.Designer.cs">
+      <DependentUpon>UCUserList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systems\UpdateServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systems\UpdateServer.Designer.cs">
+      <DependentUpon>UpdateServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemFunctionCollection.cs" />
+    <Compile Include="Ftp\AddFirmware.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ftp\AddFirmware.Designer.cs">
+      <DependentUpon>AddFirmware.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ftp\UCSystemFirmware.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ftp\UCSystemFirmware.Designer.cs">
+      <DependentUpon>UCSystemFirmware.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserSession.cs" />
+    <Compile Include="Main\Waitting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\Waitting.Designer.cs">
+      <DependentUpon>Waitting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\UCDcuController.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\UCDcuController.Designer.cs">
+      <DependentUpon>UCDcuController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\UCErrorDCU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Operation\UCErrorDCU.Designer.cs">
+      <DependentUpon>UCErrorDCU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\UCMeasurementPointLostMessage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Operation\UCMeasurementPointLostMessage.Designer.cs">
+      <DependentUpon>UCMeasurementPointLostMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\UCMeterType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Operation\UCMeterType.Designer.cs">
+      <DependentUpon>UCMeterType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systems\UCServerList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Systems\UCServerList.Designer.cs">
+      <DependentUpon>UCServerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systems\UCTopicManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Systems\UCTopicManagement.Designer.cs">
+      <DependentUpon>UCTopicManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Main\UCCommander.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\UCCommander.Designer.cs">
+      <DependentUpon>UCCommander.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="About\SoftwareAbout.resx">
+      <DependentUpon>SoftwareAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomeUserControl\UCBreakPage.resx">
+      <DependentUpon>UCBreakPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomeUserControl\UCEvnTreeView.resx">
+      <DependentUpon>UCEvnTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomeUserControl\UCProgressBarStop.resx">
+      <DependentUpon>UCProgressBarStop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomeUserControl\UCStartPanel.resx">
+      <DependentUpon>UCStartPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomeUserControl\UCTextMaquee.resx">
+      <DependentUpon>UCTextMaquee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\AddMeasurementPoint.resx">
+      <DependentUpon>AddMeasurementPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\AddCustomer.resx">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\AddMeter.resx">
+      <DependentUpon>AddMeter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\AddDcu.resx">
+      <DependentUpon>AddDcu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\ChangeMeasurementPointMeter.resx">
+      <DependentUpon>ChangeMeasurementPointMeter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\SearchingMeasurementPoint.resx">
+      <DependentUpon>SearchingMeasurementPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\UCDeployHistories.resx">
+      <DependentUpon>UCDeployHistories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\DeploymentMain.resx" />
+    <EmbeddedResource Include="Deployment\UCCustomerManagement.resx">
+      <DependentUpon>UCCustomerManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\UCDcuManagement.resx">
+      <DependentUpon>UCDcuManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\UCMeasurementPointManagementTree.resx">
+      <DependentUpon>UCMeasurementPointManagementTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\UCMeasurementPointManagement.resx">
+      <DependentUpon>UCMeasurementPointManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\UCMeterManagement.resx">
+      <DependentUpon>UCMeterManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\UpdateCustomer.resx">
+      <DependentUpon>UpdateCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\UpdateDcu.resx">
+      <DependentUpon>UpdateDcu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\UpdateMeasurementPoint.resx">
+      <DependentUpon>UpdateMeasurementPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\UpdateMeasurementPointMeter.resx">
+      <DependentUpon>UpdateMeasurementPointMeter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\UpdateMeter.resx">
+      <DependentUpon>UpdateMeter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deployment\ViewMessageDetail.resx">
+      <DependentUpon>ViewMessageDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorManagement\FixedGroup.resx">
+      <DependentUpon>FixedGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorManagement\FixErrorStep.resx">
+      <DependentUpon>FixErrorStep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorManagement\UCErrorSolution.resx">
+      <DependentUpon>UCErrorSolution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorManagement\UCErrorDefine.resx">
+      <DependentUpon>UCErrorDefine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorManagement\UCMeasurementPoitMissingMessage.resx">
+      <DependentUpon>UCMeasurementPoitMissingMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorManagement\UCModemFixbugHistories.resx">
+      <DependentUpon>UCModemFixbugHistories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorManagement\UCReporting.resx">
+      <DependentUpon>UCReporting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ftp\UpdateFirmware.resx">
+      <DependentUpon>UpdateFirmware.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Firmware.resx">
+      <DependentUpon>Firmware.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\StartupSystem.resx">
+      <DependentUpon>StartupSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\DatabaseConfig.resx">
+      <DependentUpon>DatabaseConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\ObisDefine.resx">
+      <DependentUpon>ObisDefine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\SystemResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SystemResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\UCSystemHistories.resx">
+      <DependentUpon>UCSystemHistories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\UCUserPermission.resx">
+      <DependentUpon>UCUserPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\UpdateUser.resx">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\LoginSystem.resx">
+      <DependentUpon>LoginSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\OperationMain.resx">
+      <DependentUpon>OperationMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\TopicSearch.resx">
+      <DependentUpon>TopicSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Connection\UCClientConnection.resx">
+      <DependentUpon>UCClientConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\UCMain.resx">
+      <DependentUpon>UCMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Waitting.resx">
+      <DependentUpon>Waitting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorManagement\UCFixError.resx">
+      <DependentUpon>UCFixError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operation\UpdateMeterType.resx">
+      <DependentUpon>UpdateMeterType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\UCDcuController.resx">
+      <DependentUpon>UCDcuController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operation\UCErrorDCU.resx">
+      <DependentUpon>UCErrorDCU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operation\UCMeasurementPointLostMessage.resx">
+      <DependentUpon>UCMeasurementPointLostMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operation\UCMeterType.resx">
+      <DependentUpon>UCMeterType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\UCServerList.resx">
+      <DependentUpon>UCServerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\UCTopicManagement.resx">
+      <DependentUpon>UCTopicManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\UCSystemConfig.resx">
+      <DependentUpon>UCSystemConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\UCUserList.resx">
+      <DependentUpon>UCUserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systems\UpdateServer.resx">
+      <DependentUpon>UpdateServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Main\UCCommander.resx">
+      <DependentUpon>UCCommander.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ftp\AddFirmware.resx">
+      <DependentUpon>AddFirmware.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ftp\UCSystemFirmware.resx">
+      <DependentUpon>UCSystemFirmware.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AmiOperationLib\AmiOperationLib.csproj">
+      <Project>{b2d8f565-f318-4fb9-8e4e-5adf40eba6cd}</Project>
+      <Name>AmiOperationLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OperationDTO\OperationDTO.csproj">
+      <Project>{c54da82a-b736-41a8-b1fa-a642d47f98b5}</Project>
+      <Name>OperationDTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Accenture-icon_32.ico" />
+    <None Include="Resources\message-outline16.png" />
+    <None Include="Resources\message16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\elintsys-launching-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\integration.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
